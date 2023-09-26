@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rick and Morty Info Page</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <img
+        src="/images/rick_and_morty-wallpaper-3554x1999.jpg"
+        alt="Rick and Morty background image"
+        class="headerbackground"
+      />
+    </div>
+    <h1>Welcome to the Rick and Morty info page</h1>
+    <div class="intro">
+      <p>
+        On this page you will find info about characters, locations and episodes
+        from Rick and Morty! <br />
+        In Characters you can choose from 826 Characters sorted by ID, <br />
+        in Locations you can choose from 126 Locations sorted by ID, <br />
+        and in Episodes you can choose from 51 Episodes sorted by ID. <br />
+        Just pick one of the options and write and ID and see What You Got!
+        <br />
+      </p>
+    </div>
+    <div class="container">
+      <form action="/" id="form" class="form" method="POST">
+        <select name="type" class="form-select">
+          <option data-display="Select">Please choose</option>
+          <option value="character">Character</option>
+          <option value="location">Location</option>
+          <option value="episode">Episode</option>
+        </select>
+        <input type="text" name="id" placeholder="Please write an id" />
+        <button type="submit" class="form-submit">Go</button>
+      </form>
+    </div>
+
+    <div class="response-area">
+      <% if (locals.name) { %>
+      <p>Name: <%=name%></p>
+      <% } %> <% if (locals.type) { %>
+      <p>Type: <%=type%></p>
+      <% } %> <% if (locals.dimension) { %>
+      <p>Dimension: <%=dimension%></p>
+      <% } %> <% if (locals.air_date) { %>
+      <p>Air date: <%=air_date%></p>
+      <% } %> <% if (locals.status) { %>
+      <p>Status: <%=status%></p>
+      <% } %> <% if (locals.species) { %>
+      <p>Species: <%=species%></p>
+      <% } %> <% if (locals.gender) { %>
+      <p>Gender: <%=gender%></p>
+      <% } %> <% if (locals.image) { %>
+      <img src="<%=image%>" />
+      <% } else { %>
+      <p>There will be your result👴👦</p>
+      <% } %>
+    </div>
+
+    <% if (locals.error) { %>
+    <div id="tag-error" class="tag-error"><%=error%></div>
+    <% } %>
+  </body>
+  <hr />
+  <footer class="footer">
+    <p>© <%= new Date().getFullYear() %> Nikola Beránková</p>
+  </footer>
+</html>
